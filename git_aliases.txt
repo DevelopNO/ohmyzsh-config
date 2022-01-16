@@ -1,0 +1,42 @@
+fixup = !f() { TARGET=$(git rev-parse $1); git commit --fixup=$TARGET ${@:2} && EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f
+st = status --short --branch
+br = branch
+alias = ! git config --get-regexp ^alias\. | sed -e s/^alias\.// -e s/\ /\ =\ /
+amend = commit --amend --no-edit
+wip = !git add .; git  commit -m ++WIP.
+g = log --graph --oneline --decorate --pretty='%Cred%h%Creset | %C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)[%an]%Creset'
+gl = log --graph --oneline --decorate --pretty='%Cred%h%Creset | %C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(cyan)[%an]%Creset' --stat
+dp = diff --word-diff --unified=10
+co = checkout
+sreset = ! git stash show -p | git apply --reverse
+mb = !git merge-base upstream/develop $1
+ir = rebase -i
+cb = !git branch | sed -n -e "s/^\* \(.*\)/\1/p"
+ircb = !git ir $(git mb $(git cb))
+cm = !git add .; git  commit -m
+cou = !git checkout upstream/develop
+addproj = add -p /Users/nohana/Owl/Owl/Owl.xcodeproj/project.pbxproj
+ds = dp --staged
+cl = reset HEAD --hard
+newpush = !git push -u origin $(git cb)
+cli = reset HEAD -- .
+ru = rebase upstream/develop
+blameexample = blame OWLMTLEditViewController.mm -L 1616,1620
+sts = status --short --branch --ignore-submodules=dirty
+cpf = !git cherry-pick $1 --strategy-option theirs
+coproj = checkout ..//Owl.xcodeproj/project.pbxproj
+sm = submodule update --recursive
+aa = !git add . ; git amend
+dc = diff --cached
+his = !f() { git log -L$1,+1:`${@:2}`;  }; f
+algorithm = histogram
+tool = bc3
+aamend = !git add .; git amend
+ab = absorb --and-rebase
+con = config --global
+aba = !git add .; git ab
+round = !git add .; git commit -m "++Round."
+r = commit -m "++Round."
+nb = !git checkout develop; git pull; git checkout -b 
+db = !git checkout develop; git branch -D
+checkoutr = checkout
