@@ -109,3 +109,6 @@ function grhprj() {
   gco ../*.xcodeproj/
 }
 
+function gbrf() {
+  gb -f $1
+}
